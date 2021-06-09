@@ -20,3 +20,30 @@ const play = () => {
 
   board.piece = piece;
 };
+
+// 현재 생성된 테트로미노를 제거하고 좌표 변경과 함께 복사된 테트로미노를 반환
+moves = {
+  [KEY.LEFT]: (p) => ({ ...p, x: p.x - 1 }),
+  [KEY.RIGHT]: (p) => ({ ...p, x: p.x + 1 }),
+  [KEY.DOWN]: (p) => ({ ...p, y: p.y + 1 }),
+};
+
+document.addEventListener("keydown", (event) => {
+  if (moves[event.key]) {
+    // 이벤트 버블링을 막음
+    event.preventDefault();
+
+    // 조각의 새 상태를 얻음
+    let p = moves[event.key](board.piece);
+
+    // if (board.valid(p)) {
+    // 이동이 가능한 상태라면 조각을 이동함
+    board.piece.move(p);
+
+    // 그리기 전에 이전 좌표를 지움
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+    board.piece.draw();
+    // }
+  }
+});

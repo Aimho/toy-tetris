@@ -26,6 +26,11 @@ class Piece {
     this.y = 0;
   }
 
+  move(p) {
+    this.x = p.x;
+    this.y = p.y;
+  }
+
   // 보드에 테트로미노를 그리기 위해, `shape`의 모든 셀을 순회함
   // 셀 값이 0보다 크다면, 블록을 칠함
   draw() {
