@@ -1,5 +1,6 @@
 # toy-tetris
-모던 자바스크립트로 테트리스 만들기(https://ui.toast.com/weekly-pick/ko_20191216)
+모던 자바스크립트로 테트리스 만들기 
+- https://ui.toast.com/weekly-pick/ko_20191216
 
 ## 사용할 기술
 - Classes
