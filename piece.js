@@ -2,33 +2,20 @@
 // 보드에서 테트로미노의 위치, 색상, 모양을 알기 위해서 Piece 클래스가 필요함
 // 보드에 각 테트로미노를 그릴 수 있도록 캔버스 컨텍스트를 참조해야 함
 class Piece {
-  x;
-  y;
-  color;
-  shape;
-  ctx;
-
   constructor(ctx) {
     this.ctx = ctx;
     this.spawn();
   }
 
   spawn() {
-    this.color = "blue";
-    this.shape = [
-      [2, 0, 0],
-      [2, 2, 2],
-      [0, 0, 0],
-    ];
+    // random한 tetromino 조각을 얻고, 색상과 모양을 적용함
+    this.typeId = this.randomizeTetrominoType(COLORS.length - 1);
+    this.shape = SHAPES[this.typeId];
+    this.color = COLORS[this.typeId];
 
-    // Starting position
-    this.x = 3;
+    this.x = 0;
     this.y = 0;
-  }
-
-  move(p) {
-    this.x = p.x;
-    this.y = p.y;
+    this.hardDropped = false;
   }
 
   // 보드에 테트로미노를 그리기 위해, `shape`의 모든 셀을 순회함
@@ -45,5 +32,27 @@ class Piece {
         }
       });
     });
+  }
+
+  move(p) {
+    if (!this.hardDropped) {
+      this.x = p.x;
+      this.y = p.y;
+    }
+    this.shape = p.shape;
+  }
+
+  hardDrop() {
+    this.hardDropped = true;
+  }
+
+  setStartingPosition() {
+    this.x = this.typeId === 4 ? 4 : 3;
+  }
+
+  // Tetromino 한 조각을 선택하기 위해 조각들의 Index를 random화
+  // random 숫자를 얻기 위해 배열의 길이를 사용한 함수를 생성함
+  randomizeTetrominoType(noOfTypes) {
+    return Math.floor(Math.random() * noOfTypes + 1);
   }
 }

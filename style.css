@@ -4,20 +4,29 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 320px 200px;
+  grid-template-columns: 350px 320px 200px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
 }
 
 .right-column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  text-align: center;
 }
 
 .game-board {
   border: solid 2px;
 }
 
+.pause-button,
 .play-button {
   color: #fff;
   background-color: #000;
@@ -26,6 +35,11 @@
   cursor: pointer;
 }
 
+.pause-button:hover,
 .play-button:hover {
   background-color: #555;
+}
+
+.pause-button {
+  display: none;
 }
