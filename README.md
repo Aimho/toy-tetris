@@ -1,5 +1,6 @@
 # 모던 자바스크립트로 테트리스 만들기 
-> 참고: https://ui.toast.com/weekly-pick/ko_20191216
+- demo: https://aim-tetris.netlify.app
+- 참고: https://ui.toast.com/weekly-pick/ko_20191216
 
 ## 사용할 기술
 - Classes
